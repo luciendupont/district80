@@ -27,8 +27,8 @@ class AppFixtures extends Fixture
         $manager->persist($cat1);
 
         $cat2 = new Categorie();
-        $cat2->setLibelle("Wraps");
-        $cat2->setImage("warps_cat.jpg");
+        $cat2->setLibelle("Wrap");
+        $cat2->setImage("wrap_cat.jpg");
         $cat2->setActive("yes"); 
         $manager->persist($cat2);
 
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
 
         $cat4 = new Categorie();
         $cat4->setLibelle("Sandwich");
-        $cat4->setImage("sandwich_car.jpg");
+        $cat4->setImage("sandwich_cat.jpg");
         $cat4->setActive("yes"); 
         $manager->persist($cat4);
 
@@ -147,7 +147,7 @@ class AppFixtures extends Fixture
         $plat9->setLibelle("tagliatelles au samon");
         $plat9->setDescription("Découvrez notre recette délicieuse de tagliatelles au saumon frais et à la crème qui qui vous assure un véritable régal!");
         $plat9->setPrix(12);
-        $plat9->setImage("tagliatelles_saumon.webp");
+        $plat9->setImage("tagliatelles-saumon.webp");
         $plat9->setActive(true);
         $plat9->setCategorie($cat3);
         $manager->persist($plat9);
