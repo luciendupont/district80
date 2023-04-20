@@ -1,22 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}categorie{% endblock %}
+{% block title %}categorie
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-<h1> catégories</h1>
-{% for cat in cats %}
-    
-<div class="col-4">
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cat.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cat.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                </div>
-            </div>
-</div>
-{% endfor %}
-{% endblock %}
+	<div class="container">
+		<div class="row">
+			<h1>
+				catégories</h1>
+			{% for cat in cats %}
+
+				<div class="col-4">
+					<div class="card border-dark mb-3" style="max-width: 20rem;">
+						<div class="card-header">{{cat.libelle}}</div>
+						<div class="card-body">
+							<img src="images_the_district/category/{{cat.image}}" width="200">
+							<h4 class="card-title">
+								<p class="card-text"></p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endblock %}

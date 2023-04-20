@@ -1,58 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}plat{% endblock %}
+{% block title %}plat
+{% endblock %}
 
 {% block body %}
 
-   
- <div class="container">
-<div class="row">
-<div class="col">
 
-{% for plat in plats %}
+	<div class="container">
+		<div class="row">
+			{% for plat in plats %}
+				<div class="col-4">
+					<div class="card border-dark mb-3">
+						<div class="card-header">{{plat.libelle}}</div>
+						<div class="card-body">
+							<img src="images_the_district/food/{{plat.image}}" width="200">
+							<h4 class="card-title">
+								<p class="card-text">{{plat.description}}</p>
+								<p class="card-text">{{plat.prix}}€</p>
+						</div>
+					</div>
+				</div>	
+            {% endfor %}
+		</div>
+	</div>
 
 
-    <div class="card border-dark mb-3">
-        <div class="card-header">{{plat.libelle}}</div>
-        <div class="card-body">
-            <img src="images_the_district/food/{{plat.image}}" width="200">
-            <h4 class="card-title">
-                <p class="card-text">{{plat.description}}</p>
-                <p class="card-text">{{plat.prix}}€</p>
-        </div>
-    </div>
-
-    
-{% endfor %}
-</div>
-</div>
- </div>
-
- {% block footer %}
- <div>
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#">&laquo;</a>
-      </li>
-      <li class="page-item active">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">4</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">5</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">&raquo;</a>
-      </li>
-    </ul>
-  </div>
- {% endblock %}
-{% endblock %}
+	{% endblock %}
