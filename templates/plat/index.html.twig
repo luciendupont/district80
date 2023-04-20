@@ -7,7 +7,7 @@
    
  <div class="container">
 <div class="row">
-<div class="col-6">
+<div class="col">
 
 {% for plat in plats %}
 
@@ -17,7 +17,8 @@
         <div class="card-body">
             <img src="images_the_district/food/{{plat.image}}" width="200">
             <h4 class="card-title">
-                <p class="card-text"></p>
+                <p class="card-text">{{plat.description}}</p>
+                <p class="card-text">{{plat.prix}}€</p>
         </div>
     </div>
 
