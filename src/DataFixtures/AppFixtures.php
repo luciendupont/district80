@@ -258,7 +258,7 @@ class AppFixtures extends Fixture
                   ->setEmail('kelly@gmail.com')
                   ->setTelephone('7896547800')
                   ->addCommande($commande1)
-                  ->setPassword(password_hash('password', PASSWORD_DEFAULT))
+                  ->setPassword(password_hash('lucien', PASSWORD_DEFAULT))
                   ->setRoles(['ROLE_USER']);
             $manager->persist($user1);
 
