@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\PlatRepository;
 use App\Repository\CategorieRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
@@ -27,4 +28,18 @@ class AdminController extends AbstractController
 
         );
     }
+
+    #[Route('/admin/plat',name:'app_adminplat')]
+    public function Plat(PlatRepository $platRepository):Response
+    {
+        $plat=$platRepository->findAll();
+        return $this ->render('admin/platadmin.html.twig',[
+            'plats'=>$plat
+        ]
+
+        );
+    }
+
+
+
 }
