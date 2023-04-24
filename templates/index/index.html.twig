@@ -1,129 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}restaurant le  district{% endblock %}
+{% block title %}restaurant le district{% endblock %}
 
 {% block body %}
 
-    
+
 
 
 <div class="container">
     <div class="row">
-<h1> catégories</h1>
+        <h1> catégories</h1>
 
-<div class="col-4">
+        <div class="col-4">
             <div class="card border-dark mb-3" style="max-width: 20rem;">
                 <div class="card-header">{{cats.libelle}}</div>
                 <div class="card-body">
                     <img src="images_the_district/category/{{cats.image}}" width="200">
                     <h4 class="card-title">
                         <p class="card-text"></p>
-                         <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
-                </div>
-            </div>
-</div>
-
-<div class="col-4">
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cats1.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats1.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
-                </div>
-            </div>
-</div>
-<div class="col-4">
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cats2.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats2.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
-                </div>
-            </div>
-</div>
-<div class="col-4">
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cats3.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats3.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-        <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cats4.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats4.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
+                        <a href="{{path(" app_categorie")}}" class="btn btn-dark">categorie</a>
                 </div>
             </div>
         </div>
 
-<div class="col-4">
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{cats5.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats5.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">categorie</a>
-                </div>
-            </div>
-        </div>
-
- <h1>plats</h1>
-
-        <div class="col-4">
+        <h1>plats</h1>
+        <div class="container">
+            <div class="col-4">
 
 
-            <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">{{plats.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/food/{{plats.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_plat")}}" class="btn btn-dark">plat</a>
+                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-header">{{plats.libelle}}</div>
+                    <div class="card-body">
+                        <img src="images_the_district/food/{{plats.image}}" width="200">
+                        <h4 class="card-title">
+                            <p class="card-text"></p>
+                            <a href="{{path(" app_plat")}}" class="btn btn-dark">plat</a>
                     </div>
+                </div>
             </div>
+
         </div>
 
 
-<div class="col-4">
-        <div class="card border-dark mb-3" style="max-width: 20rem;">
-            <div class="card-header">{{plats1.libelle}}</div>
-            <div class="card-body">
-                <img src="images_the_district/food/{{plats1.image}}" width="200">
-                <h4 class="card-title">
-                    <p class="card-text"></p>
-                    <a href="{{path("app_plat")}}" class="btn btn-dark">plat</a>
-            </div>
-        </div>
-    </div>
-
-
-<div class="col-4">
-
-    <div class="card border-dark mb-3" style="max-width: 20rem;">
-        <div class="card-header">{{plats2.libelle}}</div>
-        <div class="card-body">
-            <img src="images_the_district/food/{{plats2.image}}" width="200">
-            <h4 class="card-title">
-                <p class="card-text"></p>
-                <a href="{{path("app_plat")}}" class="btn btn-dark">plat</a>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-
-{% endblock %}
+        {% endblock %}
