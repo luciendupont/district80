@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">libelle</th>
+      <th scope="col">image</th>
+      <th scope="col">modifier</th>
+      <th scope="col">supprimer</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    {% for cat in cats %}
+        
+   
+<tr class="table-light">
+    <th scope="row">{{cat.id}}</th>
+    <td>{{cat.libelle}}</td>
+    <td>{{cat.image}}</td>
+    <td><a href="" class="btn btn-dark">modifier</a></td>
+    <td><a href="" class="btn btn-danger">supprimer</a></td>
+
+  </tr>
+   {% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

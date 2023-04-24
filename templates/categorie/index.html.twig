@@ -11,13 +11,13 @@
 			{% for cat in cats %}
 
 				<div class="col-4">
-					<div class="card border-dark mb-3" style="max-width: 20rem;">
+					<div class="card border-dark mb-3 mt-4" style="max-width: 20rem;">
 						<div class="card-header">{{cat.libelle}}</div>
 						<div class="card-body">
 							<img src="images_the_district/category/{{cat.image}}" width="200">
 							<h4 class="card-title">
+								<a class="btn btn-dark mt-4" href="{{path('app_catplat',{categorie:cat.id})}}" >liste des plats</a>
 							
-								<p class="card-text"></p>
 							</div>
 						</div>
 					</div>

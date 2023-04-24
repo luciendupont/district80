@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Plat;
 use App\Repository\PlatRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,16 @@ class PlatController extends AbstractController
         );
         return $this->render('plat/index.html.twig', [
          'plats'=>$plat
+        ]);
+    }
+
+    #[Route('/detail/{plat}',name:'app_detailplat')]
+    public function detail(Plat $plat)
+
+    {
+
+        return $this->render('plat/detail.html.twig',[
+            'plat'=>$plat
         ]);
     }
 }
