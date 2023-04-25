@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CartController extends AbstractController
 {
     #[Route('/mon-panier', name: 'cart')]
-    public function index(CartService $carteService): Response
+    public function index(CartService $carteService,PlatRepository $platRepository): Response
     {
         return $this->render('cart/index.html.twig', [
             'cart' => $carteService->getTotal()
