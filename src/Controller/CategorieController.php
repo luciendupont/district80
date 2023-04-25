@@ -19,7 +19,7 @@ class CategorieController extends AbstractController
         $cat = $paginator->paginate(
             $categoriripo->findAll(),
             $request->query->getInt('page', 1),
-            2
+            4
         );
         return $this->render('categorie/index.html.twig', [
             'cats'=>$cat

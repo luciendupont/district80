@@ -11,8 +11,10 @@
                 <h2 class="pt-md2 my-4 mt-lg-5">mon panier</h2>
                 <p>Ajouter d'autres plats disponibles sur le site <a href="{{path('app_plat')}}">voir les plats</a> </p>
                 {% set total = null %}
-                {% for plat in cart %}
-                {% set total = total+(plat.plat.prix*plat.quantite) %}
+                    {% set quantite = 0 %}
+                    {% for plat in cart %}
+                    {% set quantite = quantite + plat.quantite %}
+                    {% set total = total + (plat.plat.prix * plat.quantite) %}
                 <div class="d-sm-flex align-items border-top py-4">
                     <a class="d-inline-block flex-shrink-0 bg-black roounded-1 p-sm2 p-xl-3 mb-2 mb-sm-0" href="">
                         <img src="images_the_district/food/{{plat.plat.image}}" width="100"></a>
@@ -47,9 +49,11 @@
             </div>
         </div>
 
-
-
-    </div>
+<ul class="list-unstyled py-3 mb-0">
+    <li class="d-flex justify-content-between mb-2">Nombre de produit <span class="fw-semibold ms-2">{{cart|length}}</span></li>
+</ul>
+    <div class="d-flex align-items-centre justify-content-between border-top fs-xl pt-4">total:<span class="fs-3 fw-semiblod text-dark ms-2">{{(total)|number_format(2,',','.')}}€</span></div>
+    <a href="{{ path('cart_valide') }}" class="btn btn-lg btn-dark w-100 w-sm-auto mt-4">Valider mon panier</a></div>
 
 
 
@@ -66,5 +70,9 @@
         </div>
     </div>
     {% endif %}
+
+
+        
+    </div>
 </main>
 {% endblock %}

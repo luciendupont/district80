@@ -3,9 +3,11 @@
 {% block title %}restaurant le district{% endblock %}
 
 {% block body %}
+
 <div class="container fluid">
     <div class="row">
-        <div class="column"><img src="images_the_district/the_district_brand/logo_transparent.png" width="500">
+        <div class="column">
+            <img src="images_the_district/the_district_brand/logo_transparent.png" width="500">
             <form class="d-flex">
                 <input class="form-control me-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
@@ -14,7 +16,8 @@
     </div>
 </div>
 
-
+       
+{% block article %}
 <div class="container">
     <div class="row">
         <h1> catégories</h1>
@@ -47,7 +50,5 @@
                 </div>
             </div>
 
-        </div>
-
-
-        {% endblock %}
+        </div> {% endblock %}
+{% endblock %}

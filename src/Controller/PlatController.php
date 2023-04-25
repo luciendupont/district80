@@ -18,7 +18,7 @@ class PlatController extends AbstractController
         $plat = $paginator->paginate(
             $platRepository->findAll(),
             $request->query->getInt('page', 1),
-            7
+            4
         );
         return $this->render('plat/index.html.twig', [
          'plats'=>$plat
