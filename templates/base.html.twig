@@ -19,7 +19,7 @@
         {% block header %}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-            <img src="/images_the_district/the_district_brand/logo_transparent.png" width="100">
+            <img src="images_the_district/the_district_brand/logo_transparent.png" width="100">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -39,6 +39,10 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{path("app_contact")}}">Contact</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path("cart")}}">Mon panier</a>
+                  </li>
+
                  </ul>
                  <ul>
                   {% if app.user %}
@@ -59,10 +63,7 @@
               </div>
             </div>
           </nav>
-          <form class="d-flex">
-                  <input class="form-control me-sm-2" type="search" placeholder="recheche">
-                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">recheche</button>
-                </form>
+          
         {% endblock %}
         {% block body %}
         <img src="images_the_district/the_district_brand/logo_transparent.png" width="100">

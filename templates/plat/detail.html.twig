@@ -14,7 +14,7 @@
                     <h4 class="card-title">
                         <p class="card-text">{{plat.description}}</p>
                         <p class="card-text">{{plat.prix}}€</p>
-                        <a href="" class="btn btn-dark">ajouter au panier</a>
+                        <a href="{{path('cart_add', {id:plat.id})}}" class="btn btn-dark">ajouter au panier</a>
                     </div>
             </div>
         </div>
