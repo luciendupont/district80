@@ -3,19 +3,11 @@
 {% block title %}restaurant le district{% endblock %}
 
 {% block body %}
-<div class="container mt-4">
-<div style="background-image: url('images_the_district/ibg.jpg');">
-    <form action="/recherche" method="get">
-      <label for="recherche">Recherche :</label>
-      <input type="text" id="recherche" name="q">
-      <button type="submit">Rechercher</button>
-    
-    </form>
-</div>
+        <style>
+  div { background-image: url("public/images_the_district/ibg.jpg")}
+</style>
 
 
-</div>
-       
 {% block article %}
 <div class="container">
     <div class="row">
@@ -50,4 +42,4 @@
             </div>
 
         </div> {% endblock %}
-{% endblock %}
+        {% endblock %}
