@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}connexion{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -10,7 +10,9 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que
+
+            {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}"> Se Déconnecter</a>
         </div>
     {% endif %}
 
@@ -36,7 +38,7 @@
     #}
 
     <button class="btn btn-lg btn-dark" type="submit">
-        Sign in
+            Se Connecter
     </button>
 </form>
 {% endblock %}

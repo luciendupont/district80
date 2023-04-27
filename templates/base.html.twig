@@ -6,7 +6,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-        <link rel="stylesheet" href="templates/index/fond.css">
+        <link rel="stylesheet" href="fond.css">
         <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
         <link rel="stylesheet" href="https://bootswatch.com/5/lux/_variables.scss">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -73,9 +73,6 @@
 
         {% block body %}
 
-        <style>
-  div { background-image: url("public/images_the_district/ibg.jpg")}
-</style>
             {% endblock %}
 
 
@@ -84,7 +81,27 @@
     {% endblock %}
 
     {% block footer %}
-    <div class="container-fluid bg-dark mt-5 py-2 d-flex justify-content-center">
+
+    <div class="et_pb_text_inner" id="block">Le site Internet discrit80 est la propriété exclusive de LDA CONCEPT.</p>
+      <p>Identifiant siret : <span>7259845126</span><br />
+      Propriétaire : LDACONCEPT<br />
+      E-mail : contact@discrit80.fr<br />
+      Téléphone : 06 10 05 19 59</p>
+      <p>Conception du site internet : lucien DUPONT &#8211; <a href="discrit80.fr">www.discrit80.fr</a></p>
+      <p><span>Le site est hébergé par la société LDACONCEPT, 19 Boulevard guest, 800090 amiens, </span><span>Capital de 100000 euros, Siret : 7259845126.</span>
+           
+
+
+
+            <p><a href="/politique-de-confidentialite">Politique de confidentialité</a></p>
+              <p><a href="/mentions-legales">Mentions Légales</a></p>
+              <p><a href="/conditions-generales-de-vente/">CGV</a></p>
+              <p><a href="/contact">Contact</a></p>
+
+ </div>
+
+
+    <div class="container bg-dark mt-5 py-2 d-flex justify-content-center">
         <a href="https://fr-fr.facebook.com/">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook text-white" viewbox="0 0 16 16">
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
