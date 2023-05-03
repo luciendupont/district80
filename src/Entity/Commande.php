@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use App\Service\CartService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -43,7 +44,7 @@ class Commande
         return $this->id;
     }
 
-    public function getDatecommeande(): ?\DateTimeInterface
+    public function getDatecommande(): ?\DateTimeInterface
     {
         return $this->date;
     }

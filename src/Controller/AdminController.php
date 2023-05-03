@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\PlatRepository;
 use App\Repository\CategorieRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +37,18 @@ class AdminController extends AbstractController
         return $this ->render('admin/platadmin.html.twig',[
             'plats'=>$plat
         ]
+        );
+    }
 
+        #[Route('/admin/user',name:'app_adminuser')]
+        public function user(userRepository $UserRepository):Response
+        {
+            $user=$UserRepository->findAll();
+            return $this ->render('admin/useradmin.html.twig',[
+                'users'=>$user
+            ]
+    
+        
         );
     }
 

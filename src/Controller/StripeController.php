@@ -11,15 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  
 class StripeController extends AbstractController
 {
-    #[Route('/stripe/{id}', name: 'app_stripe')]
-    public function index(Commande $commande): Response
-    {
-        return $this->render('stripe/index.html.twig', [
-            'stripe_key' => "pk_test_51N0iZNFPaCkpFiEQIRkmwkEx6UCjr8m8s0LcjS3EcmQgFWKtdAz1oPVQMe8WutgffPIDLBQGRszwqnsmDvqZqZKY00Yub5vCGv",
-                'commande'=>$commande
-        
-        ]);
-    }
+   
  
  
     #[Route('/stripe/create-charge', name: 'app_stripe_charge', methods: ['POST'])]
@@ -28,7 +20,7 @@ class StripeController extends AbstractController
         Stripe\Stripe::setApiKey("sk_test_51N0iZNFPaCkpFiEQttCloECeEN4D0G0JTO4KQgQuyGRFYWmqvRxMIFWepPVZaQnIklKcYIeqW6k61mDCvqgZomwl00wEVu0pyy");
         Stripe\Charge::create ([
                 "amount" => 5 * 100,
-                "currency" => "fr",
+                "currency" => "eur",
                 "source" => $request->request->get('stripeToken'),
                 "description" => "Binaryboxtuts Payment Test"
         ]);
@@ -36,6 +28,16 @@ class StripeController extends AbstractController
             'success',
             'Payment Successful!'
         );
-        return $this->redirectToRoute('app_stripe', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_stripe', ["commande" => 1], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/stripe/{commande}', name: 'app_stripe')]
+    public function index(Commande $commande): Response
+    {
+        return $this->render('stripe/index.html.twig', [
+            'stripe_key' => "pk_test_51N0iZNFPaCkpFiEQIRkmwkEx6UCjr8m8s0LcjS3EcmQgFWKtdAz1oPVQMe8WutgffPIDLBQGRszwqnsmDvqZqZKY00Yub5vCGv",
+                'commande'=>$commande
+        
+        ]);
     }
 }

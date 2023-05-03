@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Plat;
+use App\Form\PlatType;
 use App\Repository\PlatRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,6 +35,22 @@ class PlatController extends AbstractController
 
         return $this->render('plat/detail.html.twig',[
             'plat'=>$plat
+        ]);
+    }
+
+    #[Route('/nouveauplat',name:'app_nouveauplat')]
+    public function nouveau(Request $request,EntityManagerInterface $entityManagerInterface)
+    { $plat=new Plat();
+        $form=$this->createForm(PlatType::class,$plat);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&& $form->isValid()){
+            $plat=$form->getData();
+            $entityManagerInterface->persist($plat);
+            $entityManagerInterface->flush();
+
+        }
+        return $this ->render('plat/nouveau.html.twig',[
+                'form'=>$form->createView()
         ]);
     }
 }
