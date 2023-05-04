@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\PlatRepository;
-use App\Repository\CategorieRepository;
 use App\Repository\UserRepository;
+use App\Repository\CommandeRepository;
+use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,6 +37,16 @@ class AdminController extends AbstractController
         $plat=$platRepository->findAll();
         return $this ->render('admin/platadmin.html.twig',[
             'plats'=>$plat
+        ]
+        );
+    }
+
+    #[Route('/commande',name:'app_admincommande')]
+    public function commande(CommandeRepository $commandeRepository):Response
+    {
+        $commande=$commandeRepository->findAll();
+        return $this ->render('commande/index.html.twig',[
+            'commandes'=>$commande
         ]
         );
     }

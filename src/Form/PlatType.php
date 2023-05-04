@@ -7,6 +7,8 @@ use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PlatType extends AbstractType
@@ -15,8 +17,8 @@ class PlatType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('description')
-            ->add('prix')
+            ->add('description',TextareaType::class)
+            ->add('prix',MoneyType::class)
             ->add('image')
             ->add('active')
             ->add('categorie',EntityType::class,[

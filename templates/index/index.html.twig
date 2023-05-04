@@ -7,48 +7,53 @@
 
 
 <div class="container " id="fond">
-    <div class="row ">
+    <div class="row mt-4 ">
 
 
-{{ form_start(form) }}
-<div class="row align-self-center">
-    <div class="col-8 col-md-10">{{ form_widget(form.recherche, {'attr': {'placeholder': 'Recherche', 'class':
-        'mt-4'}}) }}</div>
-    <div class="col-2"> {{ form_widget(form.submit) }}</div>
-</div>
-{{ form_end(form) }}
-</div>
-</div>
-
-    {% block article %}
-    <div class="container">
-        <div class="row">
-            <h1> catégories</h1>
-
-            <div class="card mb-3">
-                <div class="card-header">{{cats.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/category/{{cats.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_categorie")}}" class="btn btn-dark">voir les catégories</a>
-      </div>
+        {{ form_start(form) }}
+        <div class="row align-self-center">
+            <div class="col-8 col-md-10">{{ form_widget(form.recherche, {'attr': {'placeholder': 'Recherche', 'class':
+                'mt-4'}}) }}</div>
+            <div class="col-2"> {{ form_widget(form.submit) }}</div>
         </div>
+        {{ form_end(form) }}
+    </div>
+</div>
 
-            <h1>plats</h1>
-            <div class="card mb-3">
-                <div class="card-header">{{plats.libelle}}</div>
-                <div class="card-body">
-                    <img src="images_the_district/food/{{plats.image}}" width="200">
-                    <h4 class="card-title">
-                        <p class="card-text"></p>
-                        <a href="{{path("app_plat")}}" class="btn btn-dark">voir les plats</a>
-      </div>
-        </div>
+{% block article %}
+<div class="container">
+    <div class="row">
+        <h1> catégories</h1>
 
 
+
+        <div class="card mb-3">
+            {% for cat in cats %}
+            <div class="card-header">{{cat.libelle}}</div>
+            <div class="card-body">
+                <img src="images_the_district/category/{{cat.image}}" width="200">
+                <h4 class="card-title">
+                    <p class="card-text"></p>
+                    <a href="{{path("app_categorie")}}" class="btn btn-dark">voir les catégories</a>
             </div>
-             {% endblock %}
-            {% endblock %}
+            {% endfor %}
+        </div>
+
+        <h1>plats</h1>
+        <div class="card mb-3">
+            {% for plat in plats %}
 
 
+            <div class="card-header">{{plat.libelle}}</div>
+            <div class="card-body">
+                <img src="images_the_district/food/{{plat.image}}" width="200">
+                <h4 class="card-title">
+                    <p class="card-text"></p>
+                    <a href="{{path("app_plat")}}" class="btn btn-dark">voir les plats</a>
+            </div> {% endfor %}
+        </div>
+
+
+    </div>
+    {% endblock %}
+    {% endblock %}

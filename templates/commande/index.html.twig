@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for commande in utilisateur.commandes %}
+            {% for commande in commandes %}
                 <tr class="table-primary">
                     <th scope="row">{{ commande.id }}</th>
                     <td>
@@ -43,7 +43,7 @@
                     <td>{{ commande.total }}€</td>
                     <td>
                         {% if commande.etat != 2 and commande.etat != 3 and commande.etat != 4 %}
-                            <a href="{{ path('commande_annulee',{'user': app.user.id,'commande': commande.id}) }}" class="btn btn-warning">Annulée</a>
+                            <a href="{{ path('commande_annulee',{'commande': commande.id}) }}" class="btn btn-warning">Annulée</a>
                         {% endif %}
                     </td>
                 </tr>
