@@ -14,12 +14,12 @@ class StripeController extends AbstractController
    
  
  
-    #[Route('/stripe/create-charge', name: 'app_stripe_charge', methods: ['POST'])]
-    public function createCharge(Request $request)
+    #[Route('/stripe/create-charge/{commande}', name: 'app_stripe_charge', methods: ['POST'])]
+    public function createCharge(Request $request, commande $commande)
     {
         Stripe\Stripe::setApiKey("sk_test_51N0iZNFPaCkpFiEQttCloECeEN4D0G0JTO4KQgQuyGRFYWmqvRxMIFWepPVZaQnIklKcYIeqW6k61mDCvqgZomwl00wEVu0pyy");
         Stripe\Charge::create ([
-                "amount" => 5 * 100,
+                "amount" =>$commande->getTotal()*100,
                 "currency" => "eur",
                 "source" => $request->request->get('stripeToken'),
                 "description" => "Binaryboxtuts Payment Test"

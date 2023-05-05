@@ -21,8 +21,17 @@
 </div>
 
 {% block article %}
+
+
+<ul><h1>
+    Bienvenue au restaurant "Le Discrit" ! Nous sommes fiers de vous proposer une cuisine traditionnelle de qualité, préparée avec des ingrédients frais et locaux.
+
+    Dans les catégories, nous vous suggérons notre délicieuse burger,pizza,pates,sandwich,wrap et  autres.
+    Pour les plats , nous vous recommandons notre succulent  plat,pizza,burger.
+    "Le Discrit" inoubliable.</h1></ul>
+
 <div class="container">
-    <div class="row">            <h1> catégories</h1>
+    <div class="row">            
         {% for cat in cats %}  
       
 
@@ -42,7 +51,7 @@
         </div>
 
         <div class="container">
-            <div class="row">            <h1> plats</h1>
+            <div class="row">           
                 {% for plat in plats %}  
               
         
