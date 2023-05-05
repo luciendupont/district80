@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PlatType extends AbstractType
 {
@@ -19,7 +20,7 @@ class PlatType extends AbstractType
             ->add('libelle')
             ->add('description',TextareaType::class)
             ->add('prix',MoneyType::class)
-            ->add('image')
+            ->add('imageFile',VichImageType::class)
             ->add('active')
             ->add('categorie',EntityType::class,[
                 'class' => Categorie::class,

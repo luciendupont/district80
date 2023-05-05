@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CategorieType extends AbstractType
 {
@@ -18,20 +19,7 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('libelle',TextType::class)
-            ->add('image', FileType::class, [
-                'label' => false,
-                'multiple' => true,
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new All(
-                        new Image([
-                            'maxWidth' => 1280,
-                            'maxWidthMessage' => 'L\'image doit faire {{ max_width }} pixels de large au maximum'
-                        ])
-                    )
-                ]
-            ])
+            ->add('imageFile', VichImageType::class)
             ->add('active',CheckboxType::class)
         ;
     }
