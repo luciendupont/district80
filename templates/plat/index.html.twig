@@ -7,9 +7,11 @@
 
 
 	<div class="container">
-		<div class="row-center">
+		<div class="row">
+
+			<h1> LES PLATS</h1>
 			{% for plat in plats %}
-				<div class="col-4">
+				<div class="col-6">
 					<div class="card border-dark mb-3 mt-4">
 						<div class="card-header">{{plat.libelle}}</div>
 						<div class="card-body">
@@ -23,7 +25,7 @@
 		</div>
 	</div>
 	<div class="navigation d-flex justify-content-center mt-4">
-		{{ knp_pagination_render(plats) }}
+		{{ knp_pagination_render(plats)}}
 	</div>
 
 
