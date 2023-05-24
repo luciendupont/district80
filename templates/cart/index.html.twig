@@ -19,10 +19,17 @@
                         <div class="d-sm-flex align-items-center border-top py-4">
                             <div class="w-100 pt-1 ps-sm-4">
                                 <div class="d-flex">
-                                    <div class="me-3">
-                                        <h3 class="h5 mb-2">{{ plat.plat.libelle }}</h3>
+                                    <div class="card" style="width: 18rem;">
+                                    <h3 class="h5 mb-2">{{ plat.plat.libelle }}</h3>
                                         <p class="mb-2">{{ plat.plat.description }}</p>
+                                        <img src="images_the_district/food/{{ plat.plat.image }}" alt="">
                                     </div>
+                                    
+
+
+
+
+                                        
                                     <div class="text-end ms-auto">
                                         <div class="fs-5 mb-2">{{ (plat.plat.prix * plat.quantite)|number_format(2,',','.') }}€</div>
                                     </div>
