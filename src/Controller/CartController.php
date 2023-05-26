@@ -89,9 +89,14 @@ class CartController extends AbstractController
     #[Route('/facture/{id}',name:'facture_app')]
     public function facture(Commande $commande):Response
     {
-
+        for($i=0 ; $i < count($commande->getDetails()); $i++){
+            $plats[$i] = $commande->getDetails()[$i]->getPlat();
+        }
+        $user=$commande->getUser();
         return $this->render('cart/facture.html.twig',[
-            'commande'=>$commande
+            'commande'=>$commande,
+            'plats'=>$plats,
+            'user'=>$user
         ]);
     }
 }
