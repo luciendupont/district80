@@ -85,4 +85,13 @@ class CartController extends AbstractController
         $carteService->removeCartAll();
         return $this->redirectToRoute('cart');
     }
+
+    #[Route('/facture/{id}',name:'facture_app')]
+    public function facture(Commande $commande):Response
+    {
+
+        return $this->render('cart/facture.html.twig',[
+            'commande'=>$commande
+        ]);
+    }
 }

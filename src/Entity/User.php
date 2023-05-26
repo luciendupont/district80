@@ -9,9 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\Table(name: '`user`')]
+#[UniqueEntity(fields: ['email'], message: 'cet email a déjà été utiliser')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -19,30 +21,62 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50, unique: true)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre email')]
+    #[Assert\Email(message: 'Veuillez entre votre email',)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $password = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $nom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $prenom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $telephone = null;
 
     #[ORM\Column]
     private array $roles = [];
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
-    private Collection $commandes;
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
+
+    #[Assert\NotBlank(message: 'Veuillez entre votre mot de passe')]
+    #[Assert\Length(min: 8, minMessage: "Votre mot de passe doit faire minimum 8 caractères")]
+    private $plainPassword;
+
+    private $newPassword;
+
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre nom')]
+    #[Assert\Length(min: 5, minMessage: "Le nom est trop court")]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre prenom')]
+    #[Assert\Length(min: 4, minMessage: "Le prenom est trop court")]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 20)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre numero de telephone')]
+    #[Assert\Length(min: 10, minMessage: "Le numero de telephone est trop court")]
+    private ?string $telephone = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class, orphanRemoval: true)]
+    private Collection $commande;
+
+    #[ORM\Column(length: 20)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre code postal')]
+    #[Assert\Length(min: 5, minMessage: "Le code postal est trop court")]
+    private ?string $cp = null;
+
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre ville')]
+    #[Assert\Length(min: 5, minMessage: "Le nom de votre ville est trop court")]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Veuillez entre votre adresse')]
+    #[Assert\Length(min: 10, minMessage: "La adresse est trop court")]
+    private ?string $adresse = null;
 
     public function __construct()
     {
-        $this->commandes = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,7 +96,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -70,6 +136,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * Get the value of plainPassword
+     */ 
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Set the value of plainPassword
+     *
+     * @return  self
+     */ 
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
@@ -110,30 +205,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRoles(): array
-    {
-        return $this->roles;
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Commande>
      */
-    public function getCommandes(): Collection
+    public function getCommande(): Collection
     {
-        return $this->commandes;
+        return $this->commande;
     }
 
     public function addCommande(Commande $commande): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
+        if (!$this->commande->contains($commande)) {
+            $this->commande->add($commande);
             $commande->setUser($this);
         }
 
@@ -142,7 +225,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeCommande(Commande $commande): self
     {
-        if ($this->commandes->removeElement($commande)) {
+        if ($this->commande->removeElement($commande)) {
             // set the owning side to null (unless already changed)
             if ($commande->getUser() === $this) {
                 $commande->setUser(null);
@@ -153,22 +236,58 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
+     * Get the value of newPassword
+     */ 
+    public function getNewPassword()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        return $this->newPassword;
     }
 
-      /**
-     * The public representation of the user (e.g. a username, an email address, etc.)
+    /**
+     * Set the value of newPassword
      *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
+     * @return  self
+     */ 
+    public function setNewPassword($newPassword)
     {
-        return (string) $this->email;
+        $this->newPassword = $newPassword;
+
+        return $this;
     }
 
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
 }
